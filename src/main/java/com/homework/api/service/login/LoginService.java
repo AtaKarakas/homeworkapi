@@ -26,6 +26,14 @@ public class LoginService {
     @Autowired
     private RequestService requestService;
 
+    /**
+     * Authenticates a user and retrieves login response with a token if successful.
+     *
+     * @param loginRequest the login request containing credentials
+     * @return ResponseEntity containing {@link LoginResponse} if login is successful
+     * @throws HttpClientErrorException if the response is null or token/status is invalid
+     * @throws CustomException if a server error or unexpected error occurs
+     */
     public ResponseEntity<LoginResponse> login(LoginRequest loginRequest) {
         HttpHeaders headers = requestService.generateDefaultHeader();
         HttpEntity<LoginRequest> request = new HttpEntity<>(loginRequest, headers);

@@ -29,6 +29,15 @@ public class ClientService {
     @Resource
     private RequestService requestService;
 
+    /**
+     * Fetches customer information based on the provided transaction request and authentication token.
+     *
+     * @param transactionRequest the request object containing transaction details
+     * @param auth the authorization token to be included in the request headers
+     * @return ResponseEntity containing {@link CustomerInfo} if the request is successful
+     * @throws HttpClientErrorException if the response body is null or a client error occurs
+     * @throws CustomException if a server error or unexpected exception occurs during the request
+     */
     public ResponseEntity<CustomerInfo> getCustomerInfo(GetTransactionRequest transactionRequest, String auth) {
         HttpHeaders headers = requestService.generateDefaultHeader();
         headers.add(HttpHeaders.AUTHORIZATION, auth);

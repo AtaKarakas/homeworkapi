@@ -41,6 +41,15 @@ public class TransactionService {
     @Resource
     private RequestService requestService;
 
+    /**
+     * Retrieves a single transaction based on the provided request and authorization token.
+     *
+     * @param transactionReportRequest the request containing transaction details
+     * @param auth the authorization token
+     * @return ResponseEntity containing {@link GetTransactionResponse} if successful
+     * @throws HttpClientErrorException if the response is null
+     * @throws CustomException if a server error or unexpected error occurs
+     */
     public ResponseEntity<TransactionReportResponse> getTransactionReport(TransactionReportRequest transactionReportRequest,String auth) {
         HttpHeaders headers = requestService.generateDefaultHeader();
         headers.add("Authorization", auth);
@@ -65,6 +74,15 @@ public class TransactionService {
         }
     }
 
+    /**
+     * Queries transactions based on the provided request and authorization token.
+     *
+     * @param transactionQueryRequest the request containing query parameters
+     * @param auth the authorization token
+     * @return ResponseEntity containing {@link TransactionQueryResponse} if successful
+     * @throws HttpClientErrorException if the response is null
+     * @throws CustomException if a server error or unexpected error occurs
+     */
     public ResponseEntity<TransactionQueryResponse> getTransactionQuery(TransactionQueryRequest transactionQueryRequest,String auth) {
         HttpHeaders headers = requestService.generateDefaultHeader();
         headers.add("Authorization", auth);
@@ -89,6 +107,15 @@ public class TransactionService {
         }
     }
 
+    /**
+     * Retrieves a single transaction based on the provided request and authorization token.
+     *
+     * @param transactionRequest the request containing transaction details
+     * @param auth the authorization token
+     * @return ResponseEntity containing {@link GetTransactionResponse} if successful
+     * @throws HttpClientErrorException if the response is null
+     * @throws CustomException if a server error or unexpected error occurs
+     */
     public ResponseEntity<GetTransactionResponse> getTransaction(GetTransactionRequest transactionRequest, String auth) {
         HttpHeaders headers = requestService.generateDefaultHeader();
         headers.add("Authorization", auth);
